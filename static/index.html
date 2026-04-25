@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>algoroulette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Cormorant+Garamond:wght@300;400;600&family=Cormorant:ital,wght@1,300&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/css/styles.css" />
+    </head>
+    <body>
+        <div id="auth-screen" class="auth-wrap">
+            <div class="header" style="margin-bottom: 2rem">
+                <div class="logo">algo<em>roulette</em></div>
+                <div class="tag" id="tagline">sign in to track your progress</div>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tab-login" data-mode="login">login</button>
+                <button class="auth-tab" id="tab-register" data-mode="register">register</button>
+            </div>
+            <div class="auth-field">
+                <input type="email" id="auth-email" placeholder="email" />
+            </div>
+            <div class="auth-field">
+                <input type="password" id="auth-password" placeholder="password" />
+            </div>
+            <button class="btn-auth" id="btn-auth-submit">login</button>
+            <div class="auth-status" id="auth-status"></div>
+        </div>
+
+        <div id="app-screen" class="app-wrap">
+            <div class="header-row">
+                <div class="header" style="margin-bottom: 0">
+                    <div class="logo">algo<em>roulette</em></div>
+                    <div class="tag" id="tagline-app">local api · localhost:8080</div>
+                </div>
+                <div class="user-info">
+                    <span id="user-email-display"></span>
+                    <button class="btn-logout" id="btn-logout">logout</button>
+                </div>
+            </div>
+
+            <div class="filters" style="margin-top: 1.5rem">
+                <div class="pill-group" id="topics">
+                    <button class="pill active" data-val="">all</button>
+                    <button class="pill" data-val="arrays">arrays</button>
+                    <button class="pill" data-val="trees">trees</button>
+                    <button class="pill" data-val="dp">dp</button>
+                    <button class="pill" data-val="graphs">graphs</button>
+                    <button class="pill" data-val="strings">strings</button>
+                    <button class="pill" data-val="stack">stack</button>
+                    <button class="pill" data-val="binary-search">binary-search</button>
+                    <button class="pill" data-val="linked-list">linked-list</button>
+                    <button class="pill" data-val="heap">heap</button>
+                    <button class="pill" data-val="backtracking">backtracking</button>
+                    <button class="pill" data-val="bit-manipulation">bit-manipulation</button>
+                </div>
+                <div class="divider"></div>
+                <div class="pill-group" id="diffs">
+                    <button class="pill active" data-val="">any</button>
+                    <button class="pill diff-easy" data-val="easy">easy</button>
+                    <button class="pill diff-medium" data-val="medium">medium</button>
+                    <button class="pill diff-hard" data-val="hard">hard</button>
+                </div>
+            </div>
+
+            <div class="card" id="card">
+                <div class="empty-state" id="empty">
+                    <div class="empty-line"></div>
+                    <div class="empty-text">spin to begin</div>
+                    <div class="empty-line"></div>
+                </div>
+                <div id="q-content" style="display: none">
+                    <div>
+                        <div class="meta">
+                            <span class="topic-badge" id="q-topic"></span>
+                            <span class="diff-badge" id="q-diff"></span>
+                            <span class="status-badge" id="q-status-badge" style="display: none"></span>
+                        </div>
+                        <div class="question-title" id="q-title"></div>
+                        <div class="question-slug" id="q-slug"></div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-actions">
+                            <button class="btn-action" id="btn-solved">solved</button>
+                            <button class="btn-action" id="btn-skipped">skipped</button>
+                            <button class="btn-action" id="btn-bookmark">bookmark</button>
+                            <button class="btn-action" id="btn-notes-toggle">+ notes</button>
+                        </div>
+                        <div id="notes-box" style="display: none">
+                            <textarea class="notes-area" id="notes-input" rows="3" placeholder="add your notes..."></textarea>
+                            <button class="notes-save" id="btn-notes-save">save notes</button>
+                        </div>
+                        <span class="q-id" id="q-id"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-spin" id="btn-spin"><span>spin</span></button>
+                <button class="btn-secondary" id="btn-toggle-seed">+ seed</button>
+                <button class="btn-secondary" id="btn-toggle-import">import json</button>
+                <button class="btn-danger" id="btn-toggle-clear">clear all</button>
+            </div>
+
+            <div class="confirm-box" id="confirm-box">
+                <span class="confirm-text">delete all your custom questions?</span>
+                <button class="btn-cancel" id="btn-cancel-clear">cancel</button>
+                <button class="btn-confirm" id="btn-confirm-clear">confirm</button>
+            </div>
+
+            <div class="panel" id="seed-panel">
+                <div class="section-label">seed a question</div>
+                <div class="seed-full">
+                    <input type="text" id="s-title" placeholder="title" />
+                </div>
+                <div class="seed-grid">
+                    <input type="text" id="s-topic" placeholder="topic" />
+                    <select id="s-diff">
+                        <option value="">difficulty</option>
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="hard">hard</option>
+                    </select>
+                </div>
+                <div class="seed-full">
+                    <input type="text" id="s-slug" placeholder="slug" />
+                </div>
+                <button class="btn-post" id="btn-seed-submit">post to /question</button>
+                <div class="status-msg" id="seed-status"></div>
+            </div>
+
+            <div class="panel" id="import-panel">
+                <div class="section-label">import questions</div>
+                <div class="seed-full">
+                    <input type="file" id="import-file" accept=".json" />
+                </div>
+                <button class="btn-import-submit" id="btn-import-submit">post to /questions/import</button>
+                <div class="status-msg" id="import-status"></div>
+            </div>
+        </div>
+
+        <script type="module" src="/js/main.js"></script>
+    </body>
+</html>
