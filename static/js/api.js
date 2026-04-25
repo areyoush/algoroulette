@@ -1,6 +1,6 @@
 const API = window.location.hostname === "localhost" 
     ? "http://localhost:8080" 
-    : "http://algoroulette.up.railway.app";
+    : "https://algoroulette.up.railway.app";
 
 function getHeaders() {
     return {
