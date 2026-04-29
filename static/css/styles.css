@@ -293,10 +293,12 @@ body {
     margin-bottom: 0.5rem;
     letter-spacing: -0.3px;
 }
-.question-slug {
-    font-size: 11px;
-    color: #3a3a3a;
-    letter-spacing: 0.5px;
+.question-desc {
+    font-family: "DM Mono", serif;
+    font-size: 13px;
+    color: #6e6d6d;
+    letter-spacing: 0.4px;
+    word-spacing: 1px;
 }
 .card-bottom {
     margin-top: 1.5rem;
@@ -650,4 +652,45 @@ select option {
 .btn-cancel:hover {
     border-color: #444;
     color: #aaa;
+}
+.title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+}
+.btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.btn-arrow svg {
+    position: absolute;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.btn-arrow .arrow-default {
+    transform: translateY(0);
+    opacity: 1;
+}
+.btn-arrow .arrow-hover {
+    transform: translateY(100%);
+    opacity: 0;
+}
+.btn-arrow:hover .arrow-default {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+.btn-arrow:hover .arrow-hover {
+    transform: translateY(0);
+    opacity: 1;
 }

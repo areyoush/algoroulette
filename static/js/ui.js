@@ -51,11 +51,21 @@ export const UI = {
         document.getElementById("q-content").style.display = "block";
         document.getElementById("notes-box").style.display = "none";
         document.getElementById("q-title").textContent = q.title;
-        document.getElementById("q-slug").textContent = q.slug;
+        
+        const descEl = document.getElementById("q-desc");
+        if (q.description) {
+            descEl.textContent = q.description;
+            descEl.style.display = "block";
+        } else {
+            descEl.style.display = "none";
+        }
+
         document.getElementById("q-id").textContent = "#" + q.id;
         document.getElementById("notes-input").value = q.notes || "";
         document.getElementById("q-topic").textContent = q.topic;
-        
+        document.getElementById("q-title").textContent = q.title;
+        document.getElementById("q-leetcode").href = `https://leetcode.com/problems/${q.slug}`;  
+      
         const diffEl = document.getElementById("q-diff");
         diffEl.textContent = q.difficulty;
         diffEl.className = "diff-badge diff-" + q.difficulty;

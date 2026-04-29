@@ -20,7 +20,7 @@ func NewQuestionRepository(db *sql.DB) *QuestionRepository {
 func (r *QuestionRepository) GetRandom(userID int, topic, difficulty string) (*model.Question, error) {
 	query := `
 		SELECT
-			q.id, q.title, q.topic, q.difficulty, q.slug, q.is_global, q.owner_id,
+			q.id, q.title, q.topic, q.difficulty, q.slug, q.description, q.is_global, q.owner_id,
 			uqs.status, COALESCE(uqs.bookmarked, FALSE), uqs.notes
 		FROM questions q
 		LEFT JOIN user_question_status uqs
@@ -47,7 +47,7 @@ func (r *QuestionRepository) GetRandom(userID int, topic, difficulty string) (*m
 	row := r.db.QueryRow(query, args...)
 	q := &model.Question{}
 	err := row.Scan(
-		&q.ID, &q.Title, &q.Topic, &q.Difficulty, &q.Slug, &q.IsGlobal, &q.OwnerID,
+		&q.ID, &q.Title, &q.Topic, &q.Difficulty, &q.Slug, &q.Description, &q.IsGlobal, &q.OwnerID,
 		&q.Status, &q.Bookmarked, &q.Notes,
 	)
 

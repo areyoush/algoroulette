@@ -80,8 +80,22 @@
                             <span class="diff-badge" id="q-diff"></span>
                             <span class="status-badge" id="q-status-badge" style="display: none"></span>
                         </div>
-                        <div class="question-title" id="q-title"></div>
-                        <div class="question-slug" id="q-slug"></div>
+                        <div class="title-row">
+                            <div class="question-title" id="q-title"></div>
+                            <a class="btn-arrow" id="q-leetcode" href="#" target="_blank">
+                                <svg class="arrow-default" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <line x1="2" y1="16" x2="16" y2="2" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round"/>
+                                    <line x1="6" y1="2" x2="16" y2="2" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round"/>
+                                    <line x1="16" y1="12" x2="16" y2="2" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                                <svg class="arrow-hover" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <line x1="2" y1="16" x2="16" y2="2" stroke="#5dcaa5" stroke-width="1.6" stroke-linecap="round"/>
+                                    <line x1="6" y1="2" x2="16" y2="2" stroke="#5dcaa5" stroke-width="1.6" stroke-linecap="round"/>
+                                    <line x1="16" y1="12" x2="16" y2="2" stroke="#5dcaa5" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="question-desc" id="q-desc"></div>
                     </div>
                     <div class="card-bottom">
                         <div class="card-actions">
@@ -129,7 +143,7 @@
                 <div class="seed-full">
                     <input type="text" id="s-slug" placeholder="slug" />
                 </div>
-                <button class="btn-post" id="btn-seed-submit">post to /question</button>
+                <button class="btn-post" id="btn-seed-submit">seed question</button>
                 <div class="status-msg" id="seed-status"></div>
             </div>
 
@@ -138,7 +152,7 @@
                 <div class="seed-full">
                     <input type="file" id="import-file" accept=".json" />
                 </div>
-                <button class="btn-import-submit" id="btn-import-submit">post to /questions/import</button>
+                <button class="btn-import-submit" id="btn-import-submit">bulk seed</button>
                 <div class="status-msg" id="import-status"></div>
             </div>
         </div>

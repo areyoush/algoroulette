@@ -6,6 +6,7 @@ type Question struct {
 	Topic		string	`json:"topic"`
 	Difficulty	string	`json:"difficulty"`
 	Slug		string	`json:"slug"`
+	Description	*string	`json:"description"`
 	IsGlobal	string	`json:"is_global"`
 	OwnerID		*int	`json:"owner_id,omitempty"`
 	
