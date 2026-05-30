@@ -3,7 +3,7 @@
 A full-stack algorithm practice tool that randomizes your grind. No more cherry-picking easy problems — spin the wheel and face whatever comes up.
 
 
-**Live at:** [algoroulette.up.railway.app](https://algoroulette.up.railway.app)
+**Live at:** [algoroulette.onrender.com](https://algoroulette.onrender.com)
 
 ---
  
